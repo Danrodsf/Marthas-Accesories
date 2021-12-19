@@ -4,6 +4,7 @@
     "password": "719e260b",
     "database": "heroku_e4fd62843f984b2",
     "host": "eu-cdbr-west-02.cleardb.net",
+    "port": "3306",
     "dialect": "mysql"
   },
   "test": {
@@ -11,6 +12,7 @@
     "password": "719e260b",
     "database": "heroku_e4fd62843f984b2",
     "host": "eu-cdbr-west-02.cleardb.net",
+    "port": "3306",
     "dialect": "mysql"
   },
   "production": {
@@ -18,6 +20,7 @@
     "password": "719e260b",
     "database": "heroku_e4fd62843f984b2",
     "host": "eu-cdbr-west-02.cleardb.net",
+    "port": "3306",
     "dialect": "mysql"
   }
 }

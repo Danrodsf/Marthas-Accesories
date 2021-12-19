@@ -1,59 +1,48 @@
 "use strict";
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class Order extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      this.hasMany(models.Order, {
+      this.belongsTo(models.User, {
         foreignKey: "userId",
       });
-      this.hasMany(models.Wishlist, {
-        foreignKey: "userId",
+      this.hasMany(models.OrderDetail, {
+        foreignKey: "orderId",
       });
-      this.hasMany(models.Message, {
-        foreignKey: "userId",
+      this.hasMany(models.CustomOrder, {
+        foreignKey: "orderId",
       });
     }
   }
-  User.init(
+  Order.init(
     {
-      firstName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      lastName: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      age: {
+      userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
-      address: {
-        type: DataTypes.STRING,
+      ammount: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
-      phone: {
-        type: DataTypes.STRING,
+      shipping: {
+        type: DataTypes.INTEGER,
         allowNull: false,
       },
-      email: {
+      status: {
         type: DataTypes.STRING,
         allowNull: false,
-      },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
+        defaultValue: "StandBy",
       },
     },
     {
       sequelize,
-      modelName: "User",
+      modelName: "Order",
     }
   );
-  return User;
+  return Order;
 };
