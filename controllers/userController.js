@@ -109,7 +109,7 @@ UserController.update = (req, res) => {
       });
   } else {
     res.send({
-      message: "Privileges are requiered to update user.",
+      message: "Authorization required to update user.",
     });
   }
 };
@@ -141,7 +141,7 @@ UserController.getById = (req, res) => {
   const id = req.body.id;
   if (req.user.admin || req.user.user.id == id) {
     users
-      .findByPk(id)
+      .findByPk(id, { include: { all: true } })
       .then((data) => {
         if (data) {
           res.send(data);
@@ -158,7 +158,7 @@ UserController.getById = (req, res) => {
       });
   } else {
     res.send({
-      message: "Authorization required to get other users",
+      message: "Authorization required to get other user",
     });
   }
 };
@@ -190,7 +190,7 @@ UserController.delete = (req, res) => {
       });
   } else {
     res.send({
-      message: "Authorization required to get other users",
+      message: "Authorization required to delete other user",
     });
   }
 };
