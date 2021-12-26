@@ -1,6 +1,6 @@
 const router = require("express").Router();
 
-//Importamos Routes definidas en views
+//import Routes defined in views
 
 const UserRouter = require("./views/UserRouter");
 const AdminRouter = require("./views/AdminRouter");
@@ -10,7 +10,7 @@ const OrderDetailRouter = require("./views/OrderDetailRouter");
 const WishlistRouter = require("./views/WishlistRouter");
 const ProductRouter = require("./views/ProductRouter");
 
-//Rutas
+//Routes
 router.use("/user", UserRouter);
 router.use("/admin", AdminRouter);
 router.use("/message", MessageRouter);
