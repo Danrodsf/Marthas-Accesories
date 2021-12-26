@@ -91,10 +91,11 @@ OrderController.getByUserId = (req, res) => {
 //-------------------------------------------------------------------------------------
 //CREATE a new order in database
 OrderController.create = (req, res) => {
+  const id = req.body.userId;
   if (req.user.admin || req.user.user.id == id) {
     orders
       .create({
-        userId: req.user.user.id,
+        userId: id,
         ammount: req.body.ammount,
         shipping: req.body.shipping,
       })

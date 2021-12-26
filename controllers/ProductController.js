@@ -57,7 +57,6 @@ ProductController.create = (req, res) => {
   if (req.user.admin) {
     products
       .create({
-        id: req.body.id,
         name: req.body.name,
         category: req.body.category,
         material: req.body.material,
