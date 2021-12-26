@@ -31,11 +31,10 @@ MessageController.getAll = (req, res) => {
 //-------------------------------------------------------------------------------------
 //GET message by userId from database
 MessageController.getByUserId = (req, res) => {
-  const id = req.body.userId;
   if (req.user.admin || req.user.user.id == id) {
     messages
       .findAll({
-        where: { userId: id },
+        where: { userId: req.body.userId },
         include: [{ model: users }],
       })
       .then((data) => {
@@ -120,7 +119,9 @@ MessageController.update = (req, res) => {
         });
       });
   } else {
-    return "Authorization required to edit message";
+    res.send({
+      message: "Authorization required to edit message",
+    });
   }
 };
 

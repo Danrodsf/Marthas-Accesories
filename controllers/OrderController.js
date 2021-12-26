@@ -3,6 +3,7 @@ const db = require("../models");
 const orders = db.Order;
 const users = db.User;
 const orderDetails = db.OrderDetail;
+const products = db.Product;
 
 const OrderController = {}; //Create the object controller
 
@@ -32,14 +33,16 @@ OrderController.getAll = (req, res) => {
 };
 
 //-------------------------------------------------------------------------------------
-//GET message by userId from database
-OrderController.getByUserId = (req, res) => {
-  const id = req.body.userId;
-  if (req.user.admin || req.user.user.id == id) {
+//GET order by id from database
+OrderController.getById = (req, res) => {
+  if (req.user.admin) {
     orders
       .findAll({
-        where: { userId: id },
-        include: [{ model: users }, { model: orderDetails }],
+        where: { id: req.body.id },
+        include: [
+          { model: users },
+          { model: orderDetails, include: { model: products } },
+        ],
       })
       .then((data) => {
         res.send(data);
@@ -58,13 +61,41 @@ OrderController.getByUserId = (req, res) => {
 };
 
 //-------------------------------------------------------------------------------------
-//CREATE a new message in database
+//GET orders by userId from database
+OrderController.getByUserId = (req, res) => {
+  if (req.user.admin || req.user.user.id == id) {
+    orders
+      .findAll({
+        where: { userId: req.body.userId },
+        include: [
+          { model: users },
+          { model: orderDetails, include: { model: products } },
+        ],
+      })
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving orders.",
+        });
+      });
+  } else {
+    res.send({
+      message: "Authorization required to get orders",
+    });
+  }
+};
+
+//-------------------------------------------------------------------------------------
+//CREATE a new order in database
 OrderController.create = (req, res) => {
   const id = req.body.userId;
   if (req.user.admin || req.user.user.id == id) {
     orders
       .create({
-        userId: req.user.user.id,
+        userId: id,
         ammount: req.body.ammount,
         shipping: req.body.shipping,
       })
@@ -84,7 +115,7 @@ OrderController.create = (req, res) => {
 };
 
 //-------------------------------------------------------------------------------------
-//UPDATE a message from database
+//UPDATE an order from database
 OrderController.update = (req, res) => {
   const id = req.body.id;
   if (req.user.admin) {
@@ -109,12 +140,14 @@ OrderController.update = (req, res) => {
         });
       });
   } else {
-    return "Authorization required to edit the order";
+    res.send({
+      message: "Authorization required to edit the order",
+    });
   }
 };
 
 //-------------------------------------------------------------------------------------
-//DELETE a message by Id from database
+//DELETE an order by Id from database
 OrderController.delete = (req, res) => {
   const id = req.body.id;
   if (req.user.admin) {

@@ -9,7 +9,7 @@ const AdminController = require("../controllers/AdminController");
 
 router.post("/signIn", AdminController.signIn);
 
-router.post("/signUp", AdminController.signUp);
+router.post("/signUp", authJwt, AdminController.signUp);
 
 router.put("/update", authJwt, AdminController.update);
 

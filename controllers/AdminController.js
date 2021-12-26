@@ -7,11 +7,11 @@ const admin = db.Admin;
 const AdminController = {}; //Create the object controller
 
 //-------------------------------------------------------------------------------------
-//Login user with database
-//get user
+//Login Admin with database
+//get Admin
 AdminController.signIn = (req, res) => {
   let { email, password } = req.body;
-  // Buscar usuario
+  // Search for admin
   admin
     .findOne({
       where: { email: email },
@@ -21,7 +21,7 @@ AdminController.signIn = (req, res) => {
         res.status(404).json({ msg: "email not found in admin" });
       } else {
         if (bcrypt.compareSync(password, admin.password)) {
-          // Creamos el token
+          // Create Token
           let token = jwt.sign({ admin: admin }, authConfig.secret, {
             expiresIn: authConfig.expires,
           });
@@ -42,10 +42,10 @@ AdminController.signIn = (req, res) => {
 };
 
 //-------------------------------------------------------------------------------------
-//REGISTER new user in database
-//create user
+//REGISTER new Admin in database
+//create Admin
 AdminController.signUp = (req, res) => {
-  // Encriptamos la contraseña
+  // Encryption of password
   let password = bcrypt.hashSync(
     req.body.password,
     Number.parseInt(authConfig.rounds)
@@ -85,7 +85,7 @@ AdminController.update = (req, res) => {
           email: req.body.email,
           password: password,
         },
-        { where: { id: id } }
+        { where: { id: req.body.id } }
       )
       .then((num) => {
         if (num == 1) {
