@@ -74,22 +74,14 @@ UserController.signUp = (req, res) => {
 UserController.update = (req, res) => {
   const id = req.body.id;
   if (req.user.admin || req.user.user.id == id) {
-    let password = bcrypt.hashSync(
-      req.body.password,
-      Number.parseInt(authConfig.rounds)
-    );
+    if (req.body.password) {
+      req.body.password = bcrypt.hashSync(req.body.password,Number.parseInt(authConfig.rounds)
+      );
+    }    
     users
-      .update(
-        {
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
-          age: req.body.age,
-          address: req.body.address,
-          phone: req.body.phone,
-          email: req.body.email,
-          password: password,
-        },
-        { where: { id: id } }
+      .update(req.body,{ 
+        where: { id: id } 
+      }
       )
       .then((num) => {
         if (num == 1) {
