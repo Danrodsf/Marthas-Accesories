@@ -16,7 +16,7 @@ module.exports = {
           model: "chains",
           key: "id",
         },
-        onUpdate: "RESTRICT",
+        onUpdate: "CASCADE",
         onDelete: "RESTRICT",
       },
       ballId: {
@@ -26,7 +26,7 @@ module.exports = {
           model: "balls",
           key: "id",
         },
-        onUpdate: "RESTRICT",
+        onUpdate: "CASCADE",
         onDelete: "RESTRICT",
       },
       letterId: {
@@ -36,7 +36,7 @@ module.exports = {
           model: "letters",
           key: "id",
         },
-        onUpdate: "RESTRICT",
+        onUpdate: "CASCADE",
         onDelete: "RESTRICT",
       },
       chainQt: {

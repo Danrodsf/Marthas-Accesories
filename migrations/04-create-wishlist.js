@@ -16,7 +16,7 @@ module.exports = {
           model: "users",
           key: "id",
         },
-        onUpdate: "RESTRICT",
+        onUpdate: "CASCADE",
         onDelete: "RESTRICT",
       },
       productId: {
@@ -26,7 +26,7 @@ module.exports = {
           model: "products",
           key: "id",
         },
-        onUpdate: "RESTRICT",
+        onUpdate: "CASCADE",
         onDelete: "RESTRICT",
       },
       createdAt: {

@@ -16,7 +16,7 @@ module.exports = {
           model: "users",
           key: "id",
         },
-        onUpdate: "RESTRICT",
+        onUpdate: "CASCADE",
         onDelete: "RESTRICT",
       },
       message: {

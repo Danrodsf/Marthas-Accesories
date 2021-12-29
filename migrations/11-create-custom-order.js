@@ -16,7 +16,7 @@ module.exports = {
           model: "orders",
           key: "id",
         },
-        onUpdate: "RESTRICT",
+        onUpdate: "CASCADE",
         onDelete: "RESTRICT",
       },
       productId: {
@@ -26,7 +26,7 @@ module.exports = {
           model: "customproducts",
           key: "id",
         },
-        onUpdate: "RESTRICT",
+        onUpdate: "CASCADE",
         onDelete: "RESTRICT",
       },
       quantity: {
