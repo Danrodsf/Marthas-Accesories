@@ -31,10 +31,11 @@ MessageController.getAll = (req, res) => {
 //-------------------------------------------------------------------------------------
 //GET message by userId from database
 MessageController.getByUserId = (req, res) => {
+  const id = req.body.userId;
   if (req.user.admin || req.user.user.id == id) {
     messages
       .findAll({
-        where: { userId: req.body.userId },
+        where: { userId: id },
         include: [{ model: users }],
       })
       .then((data) => {
