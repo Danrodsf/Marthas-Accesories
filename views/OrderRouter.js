@@ -13,9 +13,9 @@ router.put("/update", authJwt, OrderController.update);
 
 router.get("/", authJwt, OrderController.getAll);
 
-router.get("/getById", authJwt, OrderController.getById);
+router.post("/getById", authJwt, OrderController.getById);
 
-router.get("/getByUser", authJwt, OrderController.getByUserId);
+router.post("/getByUser", authJwt, OrderController.getByUserId);
 
 router.delete("/delete", authJwt, OrderController.delete);
 

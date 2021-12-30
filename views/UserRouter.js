@@ -15,7 +15,7 @@ router.put("/update", authJwt, UserController.update);
 
 router.get("/", authJwt, UserController.getAll);
 
-router.get("/getById", authJwt, UserController.getById);
+router.post("/getById", authJwt, UserController.getById);
 
 router.delete("/delete", authJwt, UserController.delete);
 

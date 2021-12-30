@@ -13,7 +13,7 @@ router.put("/update", authJwt, OrderDetailController.update);
 
 router.get("/", authJwt, OrderDetailController.getAll);
 
-router.get("/getByOrder", authJwt, OrderDetailController.getByOrderId);
+router.post("/getByOrder", authJwt, OrderDetailController.getByOrderId);
 
 router.delete("/delete", authJwt, OrderDetailController.delete);
 

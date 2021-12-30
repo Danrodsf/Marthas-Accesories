@@ -13,7 +13,7 @@ router.put("/update", authJwt, WishlistController.update);
 
 router.get("/", authJwt, WishlistController.getAll);
 
-router.get("/getByUser", authJwt, WishlistController.getByUserId);
+router.post("/getByUser", authJwt, WishlistController.getByUserId);
 
 router.delete("/delete", authJwt, WishlistController.delete);
 
