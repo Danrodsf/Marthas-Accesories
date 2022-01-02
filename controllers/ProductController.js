@@ -8,7 +8,7 @@ const ProductController = {}; //Create the object controller
 //-------------------------------------------------------------------------------------
 //GET all products from database
 ProductController.getAll = (req, res) => {
-  if (req.user.admin) {
+  if (req.user) {
     products
       .findAll()
       .then((data) => {
@@ -30,7 +30,7 @@ ProductController.getAll = (req, res) => {
 //-------------------------------------------------------------------------------------
 //GET product by id from database
 ProductController.getById = (req, res) => {
-  if (req.user.admin) {
+  if (req.user) {
     products
       .findAll({
         where: { id: req.body.id },
