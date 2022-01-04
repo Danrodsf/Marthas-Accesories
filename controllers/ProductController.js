@@ -63,6 +63,7 @@ ProductController.create = (req, res) => {
         description: req.body.description,
         color: req.body.color,
         price: req.body.price,
+        quantity: req.body.quantity,
         imgUrl: req.body.imgUrl,
       })
       .then(() => {

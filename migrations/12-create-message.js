@@ -21,7 +21,7 @@ module.exports = {
       },
       message: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(999),
       },
       adminId: {
         allowNull: true,
@@ -29,7 +29,7 @@ module.exports = {
       },
       response: {
         allowNull: true,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(999),
       },
       createdAt: {
         allowNull: false,
