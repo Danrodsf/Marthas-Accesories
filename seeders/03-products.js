@@ -44,7 +44,7 @@ module.exports = {
           price: 6,
           quantity: 1,
           imgUrl:
-            "https://raw.githubusercontent.com/Danrodsf/Marthas-Accesories-Frontend/dev-deploy/src/img/ProductsImg/Pendientes_corazón_tejido.jpeg",
+            "https://raw.githubusercontent.com/Danrodsf/Marthas-Accesories-Frontend/dev-deploy/src/img/ProductsImg/Pendientes_corazon_tejido.jpeg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -119,7 +119,7 @@ module.exports = {
           price: 7,
           quantity: 1,
           imgUrl:
-            "https://raw.githubusercontent.com/Danrodsf/Marthas-Accesories-Frontend/dev-deploy/src/img/ProductsImg/Pulsera de eslabones circulares.jpeg",
+            "https://raw.githubusercontent.com/Danrodsf/Marthas-Accesories-Frontend/dev-deploy/src/img/ProductsImg/Pulsera_de_eslabones_circulares.jpeg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -471,7 +471,7 @@ module.exports = {
           price: 8,
           quantity: 1,
           imgUrl:
-            "https://raw.githubusercontent.com/Danrodsf/Marthas-Accesories-Frontend/dev-deploy/src/img/ProductsImg/.Pendientes_corazon.jpeg",
+            "https://raw.githubusercontent.com/Danrodsf/Marthas-Accesories-Frontend/dev-deploy/src/img/ProductsImg/Pendientes_corazon.jpeg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -544,7 +544,7 @@ module.exports = {
           price: 14,
           quantity: 1,
           imgUrl:
-            "https://raw.githubusercontent.com/Danrodsf/Marthas-Accesories-Frontend/dev-deploy/src/img/ProductsImg/Pendientes_entorchados_con_perlas.jpeg",
+            "https://raw.githubusercontent.com/Danrodsf/Marthas-Accesories-Frontend/dev-deploy/src/img/ProductsImg/Pendientes_entorchados_con_perlas_largas.jpeg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -587,7 +587,7 @@ module.exports = {
           price: 8,
           quantity: 1,
           imgUrl:
-            "https://raw.githubusercontent.com/Danrodsf/Marthas-Accesories-Frontend/dev-deploy/src/img/ProductsImg/Pendientes_corazón_mitad_piedra_blanca.jpeg",
+            "https://raw.githubusercontent.com/Danrodsf/Marthas-Accesories-Frontend/dev-deploy/src/img/ProductsImg/Pendientes_corazon_mitad_piedra_blanca.jpeg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },

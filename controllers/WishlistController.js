@@ -163,10 +163,11 @@ WishlistController.update = (req, res) => {
 //DELETE a wishlist by Id from database
 WishlistController.delete = (req, res) => {
   const id = req.body.id;
-  if (req.user.admin) {
+  const userId = req.body.userId;
+  if ((req.user.admin, req.user.user.id == userId)) {
     wishlist
       .destroy({
-        where: { id: id, userId: req.body.userId },
+        where: { id: id, userId: userId },
       })
       .then((num) => {
         if (num == 1) {
