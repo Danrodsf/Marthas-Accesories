@@ -1,4 +1,5 @@
 //Importo modelo de datos
+const { sequelize } = require("../models");
 const db = require("../models");
 const products = db.Product;
 
@@ -49,6 +50,24 @@ ProductController.getById = (req, res) => {
       message: "Authorization required to get product",
     });
   }
+};
+
+//-------------------------------------------------------------------------------------
+//GET product by id from database
+ProductController.getRandom = (req, res) => {
+  products
+    .findAll({
+      order: sequelize.random(),
+      limit: 10,
+    })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving product.",
+      });
+    });
 };
 
 //-------------------------------------------------------------------------------------

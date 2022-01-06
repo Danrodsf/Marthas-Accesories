@@ -16,7 +16,7 @@ module.exports = {
           price: 7,
           quantity: 1,
           imgUrl:
-            "https://raw.githubusercontent.com/Danrodsf/Marthas-Accesories-Frontend/dev-deploy/src/img/ProductsImg/Aros_con_cristales.jpeg",
+            "https://raw.githubusercontent.com/Danrodsf/Marthas-Accesories-Frontend/dev-deploy/src/img/ProductsImg/Aros_con_perlas.jpeg",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
