@@ -58,7 +58,7 @@ OrderDetailController.getByOrderId = (req, res) => {
 //-------------------------------------------------------------------------------------
 //CREATE a new OrderDetail in database
 OrderDetailController.create = (req, res) => {
-  if (req.user.admin) {
+  if (req.user.admin || req.user.user) {
     orderDetails
       .create({
         orderId: req.body.orderId,

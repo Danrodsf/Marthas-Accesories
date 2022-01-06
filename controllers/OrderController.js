@@ -63,10 +63,12 @@ OrderController.getById = (req, res) => {
 //-------------------------------------------------------------------------------------
 //GET orders by userId from database
 OrderController.getByUserId = (req, res) => {
+  const id = req.body.userId;
   if (req.user.admin || req.user.user.id == id) {
     orders
       .findAll({
-        where: { userId: req.body.userId },
+        where: { userId: id },
+        order: [["id", "desc"]],
         include: [
           { model: users },
           { model: orderDetails, include: { model: products } },
@@ -99,10 +101,8 @@ OrderController.create = (req, res) => {
         ammount: req.body.ammount,
         shipping: req.body.shipping,
       })
-      .then(() => {
-        res.send({
-          message: "order was created successfully.",
-        });
+      .then((data) => {
+        res.send({ message: "order was created successfully.", data });
       })
       .catch((err) => {
         res.status(500).json(err);
