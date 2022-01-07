@@ -11,7 +11,7 @@ router.post("/create", authJwt, ProductController.create);
 
 router.put("/update", authJwt, ProductController.update);
 
-router.get("/", authJwt, ProductController.getAll);
+router.get("/", ProductController.getAll);
 
 router.get("/random", ProductController.getRandom);
 

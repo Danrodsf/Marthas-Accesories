@@ -9,23 +9,17 @@ const ProductController = {}; //Create the object controller
 //-------------------------------------------------------------------------------------
 //GET all products from database
 ProductController.getAll = (req, res) => {
-  if (req.user) {
-    products
-      .findAll()
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving products.",
-        });
+  products
+    .findAll()
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving products.",
       });
-  } else {
-    res.send({
-      message: "Authorization required to get products",
     });
-  }
 };
 
 //-------------------------------------------------------------------------------------
