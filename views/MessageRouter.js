@@ -13,7 +13,7 @@ router.put("/update", authJwt, MessageController.update);
 
 router.get("/", authJwt, MessageController.getAll);
 
-router.get("/getById", authJwt, MessageController.getById);
+router.post("/getById", authJwt, MessageController.getById);
 
 router.post("/getByUser", authJwt, MessageController.getByUserId);
 
