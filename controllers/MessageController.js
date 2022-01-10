@@ -29,6 +29,32 @@ MessageController.getAll = (req, res) => {
 };
 
 //-------------------------------------------------------------------------------------
+//GET message by Id from database
+MessageController.getById = (req, res) => {
+  const id = req.body.id;
+  if (req.user.admin) {
+    messages
+      .findAll({
+        where: { id: id },
+        include: [{ model: users }],
+      })
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving message.",
+        });
+      });
+  } else {
+    res.send({
+      message: "Authorization required to get messages",
+    });
+  }
+};
+
+//-------------------------------------------------------------------------------------
 //GET message by userId from database
 MessageController.getByUserId = (req, res) => {
   const id = req.body.userId;
@@ -75,7 +101,7 @@ MessageController.create = (req, res) => {
     messages
       .create({
         userId: req.body.userId,
-        message: " ",
+        message: req.body.message,
         adminId: req.user.admin.id,
         response: req.body.response,
       })
