@@ -14,7 +14,10 @@ OrderController.getAll = (req, res) => {
   if (req.user.admin) {
     orders
       .findAll({
-        include: [{ model: users }, { model: orderDetails }],
+        include: [
+          { model: users },
+          { model: orderDetails, include: { model: products } },
+        ],
       })
       .then((data) => {
         res.send(data);
