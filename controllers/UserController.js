@@ -88,7 +88,6 @@ UserController.update = (req, res) => {
         if (num == 1) {
           res.send({
             message: "User was updated successfully.",
-            user: user,
           });
         } else {
           res.send({
