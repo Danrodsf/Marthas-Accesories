@@ -25,9 +25,9 @@ ProductController.getAll = (req, res) => {
 
 //-------------------------------------------------------------------------------------
 //GET all products with pagination from database
-ProductController.get10 = (req, res) => {
+ProductController.getByNumber = (req, res) => {
   products
-    .findAndCountAll({ limit: 10, offset: req.body.page })
+    .findAndCountAll({ limit: req.body.limit, offset: req.body.offset })
     .then((data) => {
       res.send(data);
     })
