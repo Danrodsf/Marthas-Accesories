@@ -1,6 +1,7 @@
 //Importo modelo de datos
 const { sequelize } = require("../models");
 const db = require("../models");
+const { Op } = require("sequelize");
 const products = db.Product;
 
 const ProductController = {}; //Create the object controller
@@ -29,6 +30,32 @@ ProductController.getById = (req, res) => {
     products
       .findAll({
         where: { id: req.body.id },
+      })
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving product.",
+        });
+      });
+  } else {
+    res.send({
+      message: "Authorization required to get product",
+    });
+  }
+};
+
+//-------------------------------------------------------------------------------------
+//GET product by name from database
+ProductController.getByName = (req, res) => {
+  if (req.user) {
+    products
+      .findAll({
+        where: {
+          name: { [Op.substring]: req.body.name },
+        },
       })
       .then((data) => {
         res.send(data);

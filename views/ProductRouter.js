@@ -13,6 +13,8 @@ router.put("/update", authJwt, ProductController.update);
 
 router.get("/", ProductController.getAll);
 
+router.post("/getByName", authJwt, ProductController.getByName);
+
 router.get("/random", ProductController.getRandom);
 
 router.post("/getById", authJwt, ProductController.getById);
