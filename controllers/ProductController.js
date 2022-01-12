@@ -68,10 +68,14 @@ ProductController.getById = (req, res) => {
 ProductController.getByName = (req, res) => {
   if (req.user) {
     products
-      .findAll({
+      .findAndCountAll({
         where: {
-          name: { [Op.substring]: req.body.name },
+          name: {
+            [Op.substring]: req.body.name,
+          },
         },
+        limit: req.body.limit,
+        offset: req.body.offset,
       })
       .then((data) => {
         res.send(data);
