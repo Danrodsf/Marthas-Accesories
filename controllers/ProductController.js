@@ -24,6 +24,22 @@ ProductController.getAll = (req, res) => {
 };
 
 //-------------------------------------------------------------------------------------
+//GET all products with pagination from database
+ProductController.get10 = (req, res) => {
+  products
+    .findAndCountAll({ limit: 10, offset: req.body.page })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message:
+          err.message || "Some error occurred while retrieving products.",
+      });
+    });
+};
+
+//-------------------------------------------------------------------------------------
 //GET product by id from database
 ProductController.getById = (req, res) => {
   if (req.user) {
