@@ -83,11 +83,11 @@ OrderDetailController.create = (req, res) => {
 //-------------------------------------------------------------------------------------
 //UPDATE an OrderDetail from database
 OrderDetailController.update = (req, res) => {
-  const id = req.body.orderId;
+  const id = req.body.id;
   if (req.user.admin) {
     orderDetails
       .update(req.body, {
-        where: { orderId: id },
+        where: { id: id },
       })
       .then((num) => {
         if (num == 1) {
