@@ -115,11 +115,11 @@ OrderDetailController.update = (req, res) => {
 //-------------------------------------------------------------------------------------
 //DELETE a OrderDetail by Id from database
 OrderDetailController.delete = (req, res) => {
-  const id = req.body.orderId;
+  const id = req.body.id;
   if (req.user.admin) {
     orderDetails
       .destroy({
-        where: { orderId: id },
+        where: { id: id },
       })
       .then((num) => {
         if (num == 1) {
