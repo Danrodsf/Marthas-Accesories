@@ -66,31 +66,24 @@ ProductController.getById = (req, res) => {
 //-------------------------------------------------------------------------------------
 //GET product by name from database
 ProductController.getByName = (req, res) => {
-  if (req.user) {
-    products
-      .findAndCountAll({
-        where: {
-          name: {
-            [Op.substring]: req.body.name,
-          },
+  products
+    .findAndCountAll({
+      where: {
+        name: {
+          [Op.substring]: req.body.name,
         },
-        limit: req.body.limit,
-        offset: req.body.offset,
-      })
-      .then((data) => {
-        res.send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving product.",
-        });
+      },
+      limit: req.body.limit,
+      offset: req.body.offset,
+    })
+    .then((data) => {
+      res.send(data);
+    })
+    .catch((err) => {
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving product.",
       });
-  } else {
-    res.send({
-      message: "Authorization required to get product",
     });
-  }
 };
 
 //-------------------------------------------------------------------------------------

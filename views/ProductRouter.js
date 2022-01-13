@@ -15,7 +15,7 @@ router.get("/", ProductController.getAll);
 
 router.post("/getByNumber", ProductController.getByNumber);
 
-router.post("/getByName", authJwt, ProductController.getByName);
+router.post("/getByName", ProductController.getByName);
 
 router.get("/random", ProductController.getRandom);
 
