@@ -7,7 +7,7 @@ const cors = require("cors");
 const { version } = require("winston");
 
 const app = express();
-const PORT = process.env.PORT || 3005; //Heroku Port Config
+const PORT = process.env.PORT || 3005;
 
 //Config Cors Options
 var corsOptions = {
